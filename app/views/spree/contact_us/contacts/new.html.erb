@@ -39,6 +39,9 @@
                 class: 'col-7 col-lg-4 mb-4 mb-lg-0 btn btn-primary text-uppercase font-weight-bold'
             %>
           </div>
+          <% if recaptcha_enabled? %>
+          <%= recaptcha_tags site_key: recaptcha_site_key %>
+          <% end %>
         <% end %>
       </div>
     </div>
