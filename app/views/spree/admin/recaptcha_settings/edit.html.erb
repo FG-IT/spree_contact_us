@@ -1,0 +1,43 @@
+<% content_for :page_title do %>
+  <%= t('recaptcha.config_name') %>
+<% end %>
+
+<%= form_tag admin_recaptcha_settings_path, method: :put do %>
+  <div id="preferences" data-hook>
+
+    <fieldset class="general no-border-top">
+
+      <div class='row'>
+        <div class='field col-md-6 checkbox'>
+          <%= label_tag('enabled') do %>
+            <%= check_box('', :enabled, { checked: Spree::ContactUs::Config['enabled'] }) %>
+            <%= t('recaptcha.enabled') %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class='field col-md-6'>
+          <%= label_tag('site_key') %>
+          <%= preference_field_tag('site_key', Spree::ContactUs::Config['site_key'], type: :string) %>
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class='field col-md-6 checkbox'>
+          <%= label_tag('secret_key') %>
+          <%= preference_field_tag('secret_key', Spree::ContactUs::Config['secret_key'], type: :string) %>
+        </div>
+      </div>
+
+      <div class="form-actions" data-hook="buttons">
+        <%= button Spree.t('actions.update'), 'save' %>
+        <span class="or"><%= Spree.t(:or) %></span>
+        <%= button_link_to Spree.t('actions.cancel'), edit_admin_recaptcha_settings_url, icon: 'delete' %>
+      </div>
+
+    </fieldset>
+
+  </div>
+
+<% end %>

@@ -36,6 +36,8 @@ You may also specify an email address for the notification emails from field:
 
 ## Configuration
 
+If you would like to use Google Recaptcha, go to "Configuration > Recaptcha" in admin panel, and add Recaptcha settings.
+
 If you would like to add a name or subject field to the form you may simply set the options to true within the spree_contact_us initializer located at `config/initializers/spree_contact_us.rb`:
 
     config.require_name = true

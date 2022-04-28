@@ -3,7 +3,9 @@ class Spree::ContactUs::ContactsController < Spree::StoreController
   def create
     @contact = Spree::ContactUs::Contact.new(params[:contact_us_contact])
 
-    if @contact.save
+    verified = recaptcha_enabled? ? verify_recaptcha(model: @contact, secret_key: recaptcha_secret_key) : true
+
+    if verified && @contact.save
       if Spree::ContactUs::Config.contact_tracking_message.present?
         flash[:contact_tracking] = Spree::ContactUs::Config.contact_tracking_message
       end

@@ -28,3 +28,6 @@ en:
       message_placeholder: Message
       notices:
         success: "Contact email was successfully sent."
+
+  recaptcha:
+    config_name: "Recaptcha"
