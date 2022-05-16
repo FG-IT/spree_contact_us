@@ -1,5 +1,7 @@
 class Spree::ContactUs::ContactsController < Spree::StoreController
   helper 'spree/products'
+  include ::Spree::RecaptchaHelper
+
   def create
     @contact = Spree::ContactUs::Contact.new(params[:contact_us_contact])
 
